@@ -1,0 +1,8 @@
+@import '@styles/variables.css';
+
+.card-3d{
+  background-color: var(--clr-quaternary);
+  padding: 2rem;
+  border-radius: 1rem;
+
+}
