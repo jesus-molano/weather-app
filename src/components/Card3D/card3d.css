@@ -1,8 +1,41 @@
 @import '@styles/variables.css';
 
 .card-3d{
-  background-color: var(--clr-quaternary);
+  height: 20rem;
+  width: 20rem;
+  background-color: var(--clr-bg);
   padding: 2rem;
   border-radius: 1rem;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: 
+    perspective(5000px)
+    rotateY(var(--rotateY))
+    rotateX(var(--rotateX));
+}
+.card-3d > * {
+  text-shadow: 0 0 0.3em currentColor;
+}
 
+.card-3d::before,
+.card-3d::after {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+}
+.card-3d::before{
+  inset: 0.75rem;
+  background: black;
+  transform:translateZ(-49px);
+  filter: blur(15px);
+  opacity: 0.5;
+}
+.card-3d::after {
+  inset: -1rem;
+  background: linear-gradient(-45deg, var(--clr-primary), var(--clr-secondary));
+  transform: translateZ(-50px)
+}
+
+p{
+  text-align: center;
 }
