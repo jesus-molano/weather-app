@@ -1,10 +1,10 @@
-.weather-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .weather-main-info {
@@ -13,25 +13,104 @@
   align-items: center;
 }
 
-.weather-main-info-right{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    margin-left: 1rem;
+.icon {
+  filter: drop-shadow(0 0 0.3em currentColor);
 }
-.weather-description{
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-transform: capitalize;
+.weather-main-info-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-left: 1rem;
+}
+.weather-description {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: capitalize;
 }
 .weather-currentTemp {
   font-size: 4rem;
   font-weight: 600;
 }
 
-.weather-city-name{
-    font-size: 1rem;
-    font-weight: 600;
-    text-transform: capitalize;
+.weather-city-name {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.weather-more-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.weather-min-max-temp {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.weather-maxTemp,
+.weather-minTemp {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.weather-feelsLike {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+  display: flex;
+  align-items: end;
+}
+
+.weather-windSpeed {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .weather-container {
+    padding: 0 1rem;
+  }
+  .icon {
+    width: 120px;
+    height: 120px;
+  }
+  .icon > svg {
+    width: 100%;
+    height: 100%;
+  }
+  .weather-main-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .weather-main-info-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .weather-description {
+    font-size: 1.5rem;
+  }
+
+  .weather-currentTemp {
+    font-size: 4rem;
+  }
+
+  .weather-more-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }

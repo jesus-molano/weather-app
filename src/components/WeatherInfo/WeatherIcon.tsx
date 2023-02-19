@@ -1,27 +1,51 @@
-import { FC } from 'react'
 import {
   WiDaySunny,
   WiRain,
   WiSnow,
   WiCloudy,
-  WiThunderstorm
-} from 'react-icons/wi'
+  WiThunderstorm,
+  WiSandstorm,
+  WiFog,
+  WiDust,
+  WiDayHaze,
+  WiSmoke,
+  WiTornado,
+} from 'react-icons/wi';
 
 interface Props {
-  icon: string
+  icon: string;
 }
 
-const WeatherIcon  = ({ icon } :Props) => {
+const generalWeatherSize = 200;
+
+const weatherIcons: { [key: string]: JSX.Element } = {
+  Clear: <WiDaySunny size={generalWeatherSize} />,
+  Clouds: <WiCloudy size={generalWeatherSize} />,
+  Rain: <WiRain size={generalWeatherSize} />,
+  Snow: <WiSnow size={generalWeatherSize} />,
+  Thunderstorm: <WiThunderstorm size={generalWeatherSize} />,
+  Drizzle: <WiRain size={generalWeatherSize} />,
+  Mist: <WiFog size={generalWeatherSize} />,
+  Smoke: <WiSmoke size={generalWeatherSize} />,
+  Haze: <WiDayHaze size={generalWeatherSize} />,
+  Dust: <WiDust size={generalWeatherSize} />,
+  Fog: <WiFog size={generalWeatherSize} />,
+  Sand: <WiSandstorm size={generalWeatherSize} />,
+  Ash: <WiCloudy size={generalWeatherSize} />,
+  Squall: <WiCloudy size={generalWeatherSize} />,
+  Tornado: <WiTornado size={generalWeatherSize} />,
+};
+
+const WeatherIcon: React.FC<Props> = ({ icon }) => {
+  const iconComponent = weatherIcons[icon];
+  if (!iconComponent) {
+    return weatherIcons['Clear']
+  }
   return (
     <div className='icon' data-weather={icon}>
-      {icon === 'Clear' && <WiDaySunny size={200} />}
-      {icon === 'Clouds' && <WiCloudy size={200} />}
-      {icon === 'Rain' && <WiRain size={200} />}
-      {icon === 'Snow' && <WiSnow size={200} />}
-      {icon === 'Thunderstorm' && (
-        <WiThunderstorm size={200} />
-      )}
+      {iconComponent}
     </div>
   )
-}
-export default WeatherIcon
+};
+
+export default WeatherIcon;

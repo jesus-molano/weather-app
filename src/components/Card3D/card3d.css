@@ -9,7 +9,7 @@
 }
 .card-3d{
   min-height: 20rem;
-  min-width: 20rem;
+  width: min(80vw, 30rem);
   background-color: #04294060;
   
   padding: 2rem;
@@ -42,6 +42,9 @@
   inset: -1rem;
   background: linear-gradient(-45deg, var(--clr-primary), var(--clr-secondary));
   background-image: var(--bg-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   transform: translateZ(-50px)
 }
 

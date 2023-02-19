@@ -1,5 +1,9 @@
 import { useEffect, useContext } from 'react'
-import { WiStrongWind } from 'react-icons/wi'
+import {
+  WiStrongWind,
+  WiThermometer,
+  WiThermometerExterior
+} from 'react-icons/wi'
 import { getWeather } from '@api/getWeather'
 import { LocationContext, WeatherContext } from '../../contexts'
 import WeatherIcon from './WeatherIcon'
@@ -38,18 +42,21 @@ const WeatherInfo = () => {
         </div>
       </div>
       <div className='weather-more-info'>
-        <div className='weather-maxTemp'>
-          Max temperature: {weatherData.main.temp_max.toFixed(0)}°C
-        </div>
-        <div className='weather-minTemp'>
-          Min temperature: {weatherData.main.temp_min.toFixed(0)}°C
+        <div className='weather-min-max-temp'>
+          <div className='weather-maxTemp'>
+            <WiThermometer size={30} /> {weatherData.main.temp_max.toFixed(0)}°C
+          </div>
+          <div className='weather-minTemp'>
+            <WiThermometerExterior size={30} />{' '}
+            {weatherData.main.temp_min.toFixed(0)}°C
+          </div>
         </div>
         <div className='weather-feelsLike'>
           Feels like: {weatherData.main.feels_like.toFixed(0)}°C
         </div>
         <div className='weather-windSpeed'>
           <WiStrongWind size={50} />
-          <span>{weatherData.wind.speed}</span>
+          <span>{weatherData.wind.speed}km/h</span>
         </div>
       </div>
     </div>
