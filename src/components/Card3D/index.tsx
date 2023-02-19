@@ -1,15 +1,16 @@
-import { useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
+import Weather from '@components/Weather'
 import './card3d.css'
+
 type Props = {
   coords: {
     x: number,
     y: number
   }
 }
-function Card3D({ coords }: Props) {
-  console.log(coords);
 
-  const card = useRef(null)
+function Card3D({ coords }: Props) {
+  const card: React.MutableRefObject<HTMLDivElement | null> = useRef(null)
   const middleX = window.innerWidth / 2
   const middleY = window.innerHeight / 2
   // Degrees (45 == max)
@@ -22,11 +23,10 @@ function Card3D({ coords }: Props) {
       card.current.style.setProperty('--rotateY', offsetX + "deg")
     }
   }, [coords])
+
   return (
     <div className="card-3d" tabIndex={0} ref={card}>
-      <h1>Card</h1>
-      <p>x: {coords.x}</p>
-      <p>y: {coords.y}</p>
+      <Weather apiKey='70b0b81705a1e0c4d5b2e44a1ea830df' />
     </div>
   )
 }
