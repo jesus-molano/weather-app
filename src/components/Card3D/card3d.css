@@ -8,9 +8,10 @@
   overflow: hidden;
 }
 .card-3d{
-  height: 20rem;
-  width: 20rem;
-  background-color: var(--clr-bg);
+  min-height: 20rem;
+  min-width: 20rem;
+  background-color: #04294060;
+  
   padding: 2rem;
   border-radius: 1rem;
   position: relative;
@@ -40,6 +41,7 @@
 .card-3d::after {
   inset: -1rem;
   background: linear-gradient(-45deg, var(--clr-primary), var(--clr-secondary));
+  background-image: var(--bg-image);
   transform: translateZ(-50px)
 }
 

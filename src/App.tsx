@@ -1,4 +1,5 @@
 import Card3D from '@components/Card3D'
+import { WeatherProvider } from '@contexts/WeatherProvider'
 import { useUserLocation } from './hooks/useUserLocation'
 
 function App () {
@@ -6,7 +7,9 @@ function App () {
   
   return (
     <div className='App'>
-      <Card3D />
+      <WeatherProvider>
+        <Card3D />
+      </WeatherProvider>
     </div>
   )
 }

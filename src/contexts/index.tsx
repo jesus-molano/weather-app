@@ -1,4 +1,4 @@
-import { LocationContextType } from "@types";
+import { LocationContextType, WeatherContextType, WeatherData } from "@types";
 import { createContext } from "react";
 
 export const LocationContext = createContext<LocationContextType>({
@@ -7,4 +7,9 @@ export const LocationContext = createContext<LocationContextType>({
     longitude: 0,
   },
   setLocation: () => { },
+})
+
+export const WeatherContext = createContext<WeatherContextType>({
+  weatherData: null,
+  setWeatherData: () => { },
 })

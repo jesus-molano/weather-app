@@ -7,7 +7,10 @@ interface LocationContextType {
   location: Location;
   setLocation: React.Dispatch<React.SetStateAction<Location>>;
 }
-
+interface WeatherContextType {
+  weatherData: WeatherData | null;
+  setWeatherData: React.Dispatch<React.SetStateAction<WeatherData | null>>;
+}
 interface WeatherData {
   coord:      Coord;
   weather:    Weather[];
@@ -70,4 +73,4 @@ interface Wind {
 }
 
 
-export type { Location, LocationContextType, WeatherData }
+export type { Location, LocationContextType, WeatherData, WeatherContextType }
