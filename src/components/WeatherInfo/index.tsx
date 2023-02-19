@@ -2,9 +2,9 @@ import { getWeather } from '@api/getWeather';
 import { WeatherData } from '@types';
 import { useState, useEffect, useContext } from 'react';
 import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiThunderstorm } from 'react-icons/wi';
-import { LocationContext } from '../contexts';
+import { LocationContext } from '../../contexts';
 
-const Weather = () => {
+const WeatherInfo = () => {
   const { location } = useContext(LocationContext);
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   
@@ -45,4 +45,4 @@ const Weather = () => {
   );
 };
 
-export default Weather;
+export default WeatherInfo;

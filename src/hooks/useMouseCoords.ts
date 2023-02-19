@@ -1,7 +1,8 @@
 import { useState } from 'react'
+type Coords = { x: number ; y: number }
 
-export function useMouseCoords () {
-  const [mouseCoords, setMouseCoords] = useState({ x: 0, y: 0 })
+export function useMouseCoords ({middleX, middleY}: {middleX: number, middleY: number}) {
+  const [mouseCoords, setMouseCoords] = useState<Coords>({ x: middleX, y: middleY })
 
   const handleMouseMove = (event: React.MouseEvent) => {
     setMouseCoords({ x: event.clientX, y: event.clientY })
