@@ -1,25 +1,13 @@
-import { createContext, useState } from 'react'
 import Card3D from '@components/Card3D'
-import UserPositionProvider from '@components/UserPositionProvider'
-import '@styles/App.css'
+import { useUserLocation } from './hooks/useUserLocation'
 
-
-function App() {
-  const [mouseCoords, setMouseCoords] = useState({ x: 0, y: 0 })
-
-  const handleMouseMove = (event: React.MouseEvent) => {
-    setMouseCoords({ x: event.clientX, y: event.clientY })
-  }
-  const handleTouchMove = (event: React.TouchEvent) => {
-    const touch = event.touches[0]
-    setMouseCoords({ x: touch.clientX, y: touch.clientY })
-  }
+function App () {
+  useUserLocation()
+  
   return (
-    <UserPositionProvider>
-      <div className="App" onMouseMove={handleMouseMove} onTouchMove={handleTouchMove}>
-        <Card3D coords={mouseCoords} />
-      </div>
-    </UserPositionProvider>
+    <div className='App'>
+      <Card3D />
+    </div>
   )
 }
 

@@ -1,110 +1,48 @@
-import { useState, useEffect } from 'react';
-import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiDayCloudy, WiDayFog, WiThunderstorm } from 'react-icons/wi';
+import { getWeather } from '@api/getWeather';
+import { WeatherData } from '@types';
+import { useState, useEffect, useContext } from 'react';
+import { WiDaySunny, WiRain, WiSnow, WiCloudy, WiThunderstorm } from 'react-icons/wi';
+import { LocationContext } from '../contexts';
 
 const Weather = () => {
-  const [weather, setWeather] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { location } = useContext(LocationContext);
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  
 
   useEffect(() => {
-    // Get user's location
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        const { latitude, longitude } = position.coords;
-
-        // Fetch weather data from OpenWeatherMap API
-        const API_KEY = '70b0b81705a1e0c4d5b2e44a1ea830df';
-        const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
-
-        fetch(API_URL)
-          .then(response => response.json())
-          .then(data => {
-            setWeather(data);
-            setLoading(false);
-          })
-          .catch(error => {
-            setError(error);
-            setLoading(false);
-          });
-      });
-    } else {
-      setError('Geolocation is not supported by this browser.');
-      setLoading(false);
+    const fetchWeatherData = async () => {
+      if (location.latitude && location.longitude) {
+        const data = await getWeather(location.latitude, location.longitude);
+        setWeatherData(data);
+      }
     }
-  }, []);
+    fetchWeatherData();
+  }, [location]);
 
-  if (loading) {
-    return <p>Loading weather...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
-
-  if (!weather) {
-    return null;
-  }
-
-  const iconCode = weather.weather[0].icon;
-  let icon;
-
-  switch (iconCode) {
-    case '01d':
-      icon = <WiDaySunny />;
-      break;
-    case '01n':
-      icon = <WiDaySunny />;
-      break;
-    case '02d':
-      icon = <WiDayCloudy />;
-      break;
-    case '02n':
-      icon = <WiDayCloudy />;
-      break;
-    case '03d':
-    case '03n':
-    case '04d':
-    case '04n':
-      icon = <WiCloudy />;
-      break;
-    case '09d':
-    case '09n':
-      icon = <WiRain />;
-      break;
-    case '10d':
-    case '10n':
-      icon = <WiRain />;
-      break;
-    case '11d':
-    case '11n':
-      icon = <WiThunderstorm />;
-      break;
-    case '13d':
-    case '13n':
-      icon = <WiSnow />;
-      break;
-    case '50d':
-    case '50n':
-      icon = <WiDayFog />;
-      break;
-    default:
-      icon = null;
-      break;
-  }
+  if (!weatherData) return null;
 
   return (
     <div>
-      <h2>{weather.name}</h2>
-      <div>
-        {icon}
-        <span>{weather.main.temp}°C</span>
+      <h2>{weatherData.name}</h2>
+      <div className="weather-info">
+        <div className="icon">
+          {weatherData.weather[0].main === 'Clear' && <WiDaySunny size={50} />}
+          {weatherData.weather[0].main === 'Clouds' && <WiCloudy size={50} />}
+          {weatherData.weather[0].main === 'Rain' && <WiRain size={50} />}
+          {weatherData.weather[0].main === 'Snow' && <WiSnow size={50} />}
+          {weatherData.weather[0].main === 'Thunderstorm' && <WiThunderstorm size={50} />}
+        </div>
+        <div className="temperature-info">
+          <div className='weather-currentTemp'>Current temperature: {weatherData.main.temp} °C</div>
+          <div className='weather-description'>{weatherData.weather[0].description}</div>
+          <div className='weather-maxTemp'>Max temperature: {weatherData.main.temp_max} °C</div>
+          <div className='weather-minTemp'>Min temperature: {weatherData.main.temp_min} °C</div>
+          <div className='weather-feelsLike'>Feels like: {weatherData.main.feels_like} °C</div>
+          <div className='weather-windSpeed'>Wind speed: { weatherData.wind.speed }</div>
+        </div>
       </div>
-      <p>
-        {weather.main.temp_min}°C / {weather.main.temp_max}°C
-      </p>
     </div>
   );
 };
 
 export default Weather;
-
