@@ -4,6 +4,7 @@ import { WeatherProvider } from '@contexts/WeatherProvider'
 import { useContext } from 'react'
 import { LocationContext } from './contexts'
 import { useUserLocation } from './hooks/useUserLocation'
+import './styles/App.css';
 
 function App () {
   useUserLocation()
