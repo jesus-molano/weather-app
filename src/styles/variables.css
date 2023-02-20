@@ -2,9 +2,9 @@
 :root {
 /* Color variables */
   --clr-text: #fff;
-  --clr-bg: #042940;
+  --clr-bg: #18132f;
   --clr-primary:#003a5c ;
-  --clr-secondary:#00af9a ;
+  --clr-secondary:#009dff ;
   --clr-tertiary:#f22756 ;
   --clr-quaternary:#fffee0;
 }

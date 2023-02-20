@@ -20,24 +20,36 @@ const SearchBar: React.FC = () => {
   const doneTypingInterval = 1000
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('me ejecuto 1');
+    
     const city = e.target.value
     clearTimeout(typingTimer)
     setValue(e.target.value)
     if (typingTimeout) {
       clearTimeout(typingTimeout);
+      console.log('me ejecuto 2');
+
     }
     
     setTypingTimeout(setTimeout(async (city: string) => {
+      console.log('me ejecuto 3');
+
       if(city === '') return
       const data = await getLatLonCity(city)
+      console.log('me ejecuto 4');
+
       if (data.length === 0) {
         setValue('')
+        console.log('me ejecuto 5');
         return setError(true)
+
       }
       const lat = data[0].lat
       const lon = data[0].lon
       setLocation({ latitude: lat, longitude: lon })
       setValue('')
+      console.log('me ejecuto 6');
+
       
     }, doneTypingInterval, city));
       

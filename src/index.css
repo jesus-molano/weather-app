@@ -22,12 +22,9 @@ html, body {
   color-scheme: light dark;
   color: var(--clr-text);
   background: hsl(224, 32%, 12%);
-  background: -moz-conic-gradient(from 0deg at 50% 50%, blue, purple, purple, blue);
-  background: -webkit-conic-gradient(from 0deg at 50% 50%, blue, purple, purple, blue);
-  background: conic-gradient(from 0deg at 50% 50%, blue, purple, purple, blue); 
-  -webkit-background-blend-mode: multiply;
-  -moz-background-blend-mode: multiply;
-  background-blend-mode: multiply;
+  background: -moz-conic-gradient(from 0deg at 50% 50%, var(--clr-primary), var(--clr-bg), var(--clr-bg), var(--clr-primary));
+  background: -webkit-conic-gradient(from 0deg at 50% 50%, var(--clr-primary), var(--clr-bg), var(--clr-bg), var(--clr-primary));
+  background: conic-gradient(from 0deg at 50% 50%, var(--clr-primary), var(--clr-bg), var(--clr-bg), var(--clr-primary)); 
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
