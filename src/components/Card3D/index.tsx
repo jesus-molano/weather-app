@@ -43,7 +43,7 @@ function Card3D () {
     <div
       className='container-card'
       onMouseMove={handleMouseMove}
-      onTouchMove={handleTouchMove}
+      // onTouchMove={handleTouchMove}
     >
       <SearchBar />
       <div className='card-3d' ref={card}>
