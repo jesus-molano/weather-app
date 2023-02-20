@@ -11,19 +11,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
-}
-.spinner-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
 }
 p{
   text-align: center;
   max-width: 30rem;
+  padding: 1rem;
 }
 .spinner-icon {
   animation: spin 4s linear infinite;
