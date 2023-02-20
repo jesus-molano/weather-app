@@ -64,9 +64,15 @@ p{
 
 @media (max-width: 600px) {
   .container-card{
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
   .card-3d{
-    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-height: 745px) {
+  .container-card{
+    justify-content: center;
   }
 }
