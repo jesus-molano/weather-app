@@ -3,6 +3,7 @@ import { useMouseCoords } from '@hooks/useMouseCoords'
 import WeatherInfo from '@components/WeatherInfo'
 import { WeatherContext } from '@contexts/index'
 import './card3d.css'
+import SearchBar from '@components/SearchBar'
 
 function Card3D () {
   const card: React.MutableRefObject<HTMLDivElement | null> = useRef(null)
@@ -44,6 +45,7 @@ function Card3D () {
       onMouseMove={handleMouseMove}
       onTouchMove={handleTouchMove}
     >
+      <SearchBar />
       <div className='card-3d' tabIndex={0} ref={card}>
         <WeatherInfo />
       </div>
