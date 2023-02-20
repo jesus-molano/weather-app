@@ -46,7 +46,7 @@ function Card3D () {
       onTouchMove={handleTouchMove}
     >
       <SearchBar />
-      <div className='card-3d' tabIndex={0} ref={card}>
+      <div className='card-3d' ref={card}>
         <WeatherInfo />
       </div>
     </div>
