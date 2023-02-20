@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { useMouseCoords } from '@hooks/useMouseCoords'
 import WeatherInfo from '@components/WeatherInfo'
 import { WeatherContext } from '@contexts/index'

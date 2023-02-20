@@ -3,8 +3,8 @@ import { createContext } from "react";
 
 export const LocationContext = createContext<LocationContextType>({
   location: {
-    latitude: 0,
-    longitude: 0,
+    latitude: null,
+    longitude: null,
   },
   setLocation: () => { },
 })
