@@ -22,8 +22,7 @@ const LoadingSpinner = () => {
       <div className='enable-location-text'>
         <p>
           You must grant access to the location at the top of the search bar{' '}
-          <MdLocationOff className='location-icon' size={20} /> and reload the
-          page or click the button below.
+          <MdLocationOff className='location-icon' size={20} /> and click the button below.
         </p>
       </div>
       <button onClick={handleLocation}>Grant access</button>

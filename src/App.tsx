@@ -3,11 +3,9 @@ import LoadingSpinner from '@components/LoadingSpinner'
 import { WeatherProvider } from '@contexts/WeatherProvider'
 import { useContext } from 'react'
 import { LocationContext } from './contexts'
-import { useUserLocation } from './hooks/useUserLocation'
 import './styles/App.css';
 
 function App () {
-  useUserLocation()
   const {location} = useContext(LocationContext)
   return (
     <div className='App'>
