@@ -4,8 +4,8 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   animation: fadeIn 1s;
 }
@@ -60,4 +60,13 @@
 
 p{
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .container-card{
+    justify-content: flex-start;
+  }
+  .card-3d{
+    margin-top: 1.5rem;
+  }
 }
