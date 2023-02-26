@@ -54,6 +54,7 @@
   border: none;
   box-shadow: none;
   padding: 0;
+  color: var(--clr-text);
 }
 .search-button:focus{
   outline: none;
