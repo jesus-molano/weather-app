@@ -14,50 +14,39 @@ const SearchBar: React.FC = () => {
     title: 'Error',
     onOk: () => setError(false)
   }
-  let typingTimer: number | undefined = undefined
-  const [typingTimeout, setTypingTimeout] = useState(0)
-  const doneTypingInterval = 1000
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const city = e.target.value
-    clearTimeout(typingTimer)
     setValue(e.target.value)
-    if (typingTimeout) {
-      clearTimeout(typingTimeout)
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!value) return
+
+    const data = await getLatLonCity(value)
+    if (data.length === 0) {
+      setValue('')
+      return setError(true)
     }
-
-    setTypingTimeout(
-      setTimeout(
-        async (city: string) => {
-          if (city === '') return
-          const data = await getLatLonCity(city)
-
-          if (data.length === 0) {
-            setValue('')
-            return setError(true)
-          }
-          const lat = data[0].lat
-          const lon = data[0].lon
-          setLocation({ latitude: lat, longitude: lon })
-          setValue('')
-        },
-        doneTypingInterval,
-        city
-      )
-    )
+    const lat = data[0].lat
+    const lon = data[0].lon
+    setLocation({ latitude: lat, longitude: lon })
+    setValue('')
   }
   return (
     <>
       {error && <CustomAlert options={options} />}
-      <div className='searchbar'>
+      <form className='searchbar' onSubmit={handleSubmit}>
         <input
           type='text'
           placeholder='Search a city...'
-          onChange={handleChange}
           value={value}
+          onChange={handleChange}
         />
-        <BiSearchAlt className='search-icon' size={30} />
-      </div>
+        <button className='search-button'>
+          <BiSearchAlt className='search-icon' size={30} />
+        </button>
+      </form>
     </>
   )
 }

@@ -49,6 +49,20 @@
   color: var(--clr-text);
 }
 
+.search-button{
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+.search-button:focus{
+  outline: none;
+}
+.search-button:focus svg{
+  fill: var(--clr-secondary);
+  transform: scale(1.2);
+}
+
 @media (max-width: 600px) {
   .searchbar {
     margin: 0 1rem 0 1rem;
