@@ -21,7 +21,7 @@
   border: 4px solid var(--clr-secondary);
 }
 
-.searchbar input[type="text"] {
+.searchbar input[type="search"] {
   width: min(100%, 200px);
   border: none;
   background-color: transparent;

@@ -38,7 +38,7 @@ const SearchBar: React.FC = () => {
       {error && <CustomAlert options={options} />}
       <form className='searchbar' onSubmit={handleSubmit}>
         <input
-          type='text'
+          type='search'
           placeholder='Search a city...'
           value={value}
           onChange={handleChange}
